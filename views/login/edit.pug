@@ -1,0 +1,13 @@
+html
+    head
+        title Add USER
+    body
+        form.form-inline(action="/users", method="POST")
+            div.form-group
+                label(for="username") USERNAME:
+                input.form-control(name="username" placeholder="write your username here")
+            div.form-group
+                label(for="password") PASSWORD:
+                input.form-control(type='password' name="password" placeholder="write your password here")
+            div
+                button.btn-primary(type="submit") Save
