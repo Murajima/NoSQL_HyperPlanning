@@ -4,6 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var uuidv4 = require('uuid/v4')
+var redis = require('redis')
+var client = redis.createClient('6379', 'redis')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -15,6 +19,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -22,11 +28,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'this-is-a-secret-token', cookie: { maxAge: 60000 }}));
 
+app.all('*',(req, res, next) => {
+  if(!req.session.hasOwnProperty('xuuid') || req.session.xuuid == ''){
+      xuuid = uuidv4()
+      client.set(xuuid, '', function(err, reply){
+        req.session.xuuid = xuuid
+        next()
+      })
+  }
+  else {
+    next()
+  }
+
+})
 
 app.use('/login', login)
 app.use('/', index);
 app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
