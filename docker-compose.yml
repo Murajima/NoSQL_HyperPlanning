@@ -5,9 +5,16 @@ services:
     restart: always
   mongo:
     image: mongo
+    build:
+      context: .
+      dockerfile: Dockerfile.mongodb
+    volumes:
+      - ./mongodbdata:/data/db
     restart: always
   app:
     build: .
+    volumes:
+      - .:/app
     ports:
       - 3000:3000
     links:

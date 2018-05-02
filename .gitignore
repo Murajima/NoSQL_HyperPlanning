@@ -1,3 +1,5 @@
+./mongodbdata
+
 .DS_Store
 .idea/
 # Logs
