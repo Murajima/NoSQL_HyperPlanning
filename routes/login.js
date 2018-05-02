@@ -7,6 +7,10 @@ router.get('/', (req, res, next) => {
 	res.render('login/login')
 })
 
+router.get('/register', (req, res, next) => {
+    res.render('login/edit')
+})
+
 router.use((req, res) => {
     res.redirect('/login')
 })

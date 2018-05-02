@@ -43,8 +43,8 @@ app.all('*',(req, res, next) => {
 
 //on essaye
 app.use('/login', login)
-app.use('/', index);
 app.use('/users', users);
+app.use('/', login);
 
 
 // catch 404 and forward to error handler
