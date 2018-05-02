@@ -1,10 +1,32 @@
 const db = require('./db')
 
-var kittySchema = db.Schema({
-  name: String
-});
+var userSchema = new db.Schema({
+  nom: { type: String },
+  prenom: { type: String },
+  etat: { type: String }
+}, { collection : 'User' });
 
-var Kitten = db.model('Kitten', kittySchema);
+var noteSchema = new db.Schema({
+  User: { type: String },
+  matiere: { type: String },
+  Coef: { type: Number },
+  Note: { type: Number }
+}, { collection : 'Note' });
 
+var classeSchema = new db.Schema({
+  type: { type: String },
+  niveau: { type: Number },
+  classe: { type: Number },
+}, { collection : 'Classe' });
 
-module.exports = {Kitten}
+var matiereSchema = new db.Schema({
+  matière: { type: String },
+  professeur1: { type: String },
+}, { collection : 'Matière' });
+
+var User = db.model('User', userSchema);
+var Note = db.model('Note', noteSchema);
+var Classe = db.model('Classe', classeSchema);
+var Matiere = db.model('Matiere', matiereSchema);
+
+module.exports = {User, Note, Classe, Matiere}
