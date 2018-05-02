@@ -1,4 +1,4 @@
-./mongodbdata
+.mongodbdata/
 
 .DS_Store
 .idea/

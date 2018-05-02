@@ -8,6 +8,8 @@ var session = require('express-session');
 var uuidv4 = require('uuid/v4')
 var redis = require('redis')
 var client = redis.createClient('6379', 'redis')
+var MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -19,10 +21,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// MongoClient.connect("mongodb://mongo:27017/hyperplanning", function (err, db) {
 
+//      if(err) throw err;
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//      //Write databse Insert/Update/Query code here..
+
+// });
+
+mongoose.connect('mongodb://mongo/hyperplanning');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected')
+});
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
