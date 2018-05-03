@@ -29,4 +29,4 @@ var Note = db.model('Note', noteSchema);
 var Classe = db.model('Classe', classeSchema);
 var Matiere = db.model('Matiere', matiereSchema);
 
-module.exports = {User, Note, Classe, Matiere}
+module.exports = {User, Note, Classe, Matiere};

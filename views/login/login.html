@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hyperplanning - login</title>
+
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/login.css">
+
+</head>
+<body>
+
+    <div class="well well-sm col-xs-offset-4 col-xs-6 margin_top">
+
+        <h1 class="text-center">Login</h1>
+
+        <form action="/login" method="post">
+
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="form-group">
+                        <label for="Email">Email address</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="form-group">
+                        <label for="Password">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-5  col-md-2">
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-offset-5  col-md-2">
+                    <a href="/register">
+                        <button class="btn btn-primary">Se connecter</button>
+                    </a>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+
+</body>
+</html>

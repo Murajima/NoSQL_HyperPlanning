@@ -1,0 +1,13 @@
+
+/* Background */
+body{
+    background:url("../imgs/bg_login.jpg") no-repeat center fixed;
+    margin:0;
+    padding:0;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
+.margin_top{
+    margin-top: 100px;
+}
