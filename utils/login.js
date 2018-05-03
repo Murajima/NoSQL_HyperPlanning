@@ -1,5 +1,4 @@
-lconst Models = require('../models/models.js')
-const db = require('../models/db.js')
+const Models = require('../models/models.js')
 const bcrypt = require('bcrypt-nodejs')
 
 
