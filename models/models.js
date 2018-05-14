@@ -2,7 +2,6 @@ const db = require('./db')
 
 var userSchema = new db.Schema({
   pseudo: { type: String },
-  mdp: { type: String },
   nom: { type: String },
   prenom: { type: String },
   etat: { type: String },
