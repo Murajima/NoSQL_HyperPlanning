@@ -12,7 +12,6 @@ router.get('/', function(req, res, next) {
   //     res.render('index', { title: reply });
   //   })
   // })
-  console.log('lets go')
   Models.User.find({}, function (err, user){
     console.log(user)
     res.render('prof', { title: user });

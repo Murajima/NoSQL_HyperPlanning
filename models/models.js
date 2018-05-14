@@ -3,7 +3,9 @@ const db = require('./db')
 var userSchema = new db.Schema({
   nom: { type: String },
   prenom: { type: String },
-  etat: { type: String }
+  etat: { type: String },
+  username: { type: String },
+  password: { type: String}
 }, { collection : 'User' });
 
 var noteSchema = new db.Schema({
