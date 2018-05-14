@@ -1,0 +1,37 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    title page Prof
+    // <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css" />
+    link(rel='stylesheet', href='../bower_components/bootstrap/dist/css/bootstrap.css')
+    // <link rel="stylesheet" href="/stylesheets/login.css">
+    link(rel='stylesheet', href='../public/stylesheets/login.css')
+.col-md-offset-2.col-md-8.well.well-lg.margin_top
+    h2.te  Proffesseur : Jerremy Trufier
+    h2 Liste des &eacute;l&egrave;ves :
+    table.table.table-striped
+        thead
+            tr
+                th Firstname
+                th Lastname
+                th Email
+                th lien
+        tbody
+            tr
+                td John
+                td Doe
+                td john@example.com
+                td
+                    a.glyphicon.glyphicon-arrow-right(href='http://google.com')
+            tr
+                td Mary
+                td Moe
+                td mary@example.com
+                td
+                    a.glyphicon.glyphicon-arrow-right(href='http://google.com')
+            tr
+                td July
+                td Dooley
+                td july@example.com
+                td
+                    a.glyphicon.glyphicon-arrow-right(href='http://google.com')
