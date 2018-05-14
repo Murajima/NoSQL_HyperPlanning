@@ -15,6 +15,7 @@
     "mongodb": "^3.0.7",
     "mongoose": "^5.1.0",
     "morgan": "~1.9.0",
+    "popper.js": "^1.14.3",
     "pug": "2.0.0-beta11",
     "redis": "^2.8.0",
     "serve-favicon": "~2.4.5",
