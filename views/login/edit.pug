@@ -7,7 +7,7 @@ html
     body
         .well.well-sm.col-xs-offset-4.col-xs-6.margin_top
             h1.text-center Register
-            form.form-inline(action="/users", method="POST")
+            form.form-inline(action="/login/adduser", method="POST")
                 div.form-group
                     label(for="username") USERNAME:
                     input.form-control(name="username" placeholder="write your username here")
