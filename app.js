@@ -48,7 +48,7 @@ app.all('*',(req, res, next) => {
 //on essaye
 app.use('/login', login);
 app.use('/users', users);
-app.use('/teachers', teachers)
+app.use('/teachers', teachers);
 app.use('/', login);
 
 

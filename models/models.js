@@ -5,7 +5,9 @@ var userSchema = new db.Schema({
   mdp: { type: String },
   nom: { type: String },
   prenom: { type: String },
-  etat: { type: String }
+  etat: { type: String },
+  username: { type: String },
+  password: { type: String}
 }, { collection : 'User' });
 
 var noteSchema = new db.Schema({
