@@ -12,6 +12,7 @@ var client = redis.createClient('6379', 'redis');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
+var teachers = require('./routes/prof')
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.all('*',(req, res, next) => {
 //on essaye
 app.use('/login', login);
 app.use('/users', users);
+app.use('/teachers', teachers)
 app.use('/', login);
 
 
