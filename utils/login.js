@@ -12,12 +12,10 @@ function getUsers () {
 
 function loginOK(username, password) {
     USER = {}
-    console.log('OUI')
     return new Promise((resolve, reject) => {
         getUsers().then((result) => {
             USER = result
             USER.forEach(function(element){
-                console.log(element)
                 if(element.username == username && element.password == password ){ //validPassword(password, element.password)
                     resolve({'username': element.username, 'id': element._id, 'etat': element.etat})
                 }

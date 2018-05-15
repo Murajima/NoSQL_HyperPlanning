@@ -2,6 +2,8 @@ const express = require('express')
 const session = require('express-session')
 const utils = require('../utils/login.js')
 const newuser = require('../utils/register')
+const redis = require('redis')
+const client = redis.createClient('6379', 'redis')
 
 const router = express.Router();
 
@@ -13,6 +15,9 @@ router.post('/loginOK', (req, res, next) => {
     var password = req.body.password
     var username = req.body.username
     utils.loginOK(username, password).then((result) => {
+        req.session.username = result._id
+        console.log(result.id)
+        client.set(result.id, result)
         if (result.etat == 'etudiant') {
             res.redirect('/register')
         } else if (result.etat == 'professeur') {
