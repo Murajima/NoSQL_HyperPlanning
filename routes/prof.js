@@ -7,15 +7,18 @@ var Models = require('../models/models.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // client.set('test', 'toto', function(err, reply){
-  //   client.get('test', function(err, reply){
-  //     res.render('index', { title: reply });
-  //   })
-  // })
-  Models.User.find({}, function (err, user){
-    console.log(user)
-    res.render('prof', { users : user });
-  })
+    // client.set('test', 'toto', function(err, reply){
+    //   client.get('test', function(err, reply){
+    //     res.render('index', { title: reply });
+    //   })
+    // })
+    Models.User.find({}, function (err, user){
+        // console.log(user);
+        res.render('prof', { users : user });
+    }).catch (function (err) {
+        console.log(err);
+    })
+
 });
 
 module.exports = router;
