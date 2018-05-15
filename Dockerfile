@@ -1,6 +1,10 @@
-FROM node:8
+FROM node:9-alpine
+
 WORKDIR /app
-COPY . /app
-EXPOSE 3000
+COPY package.json /app
 RUN npm install
-CMD [ "npm", "start" ]
+COPY . /app
+
+CMD npm start
+EXPOSE 3000
+VOLUME /app/node_modules

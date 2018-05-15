@@ -8,6 +8,7 @@ var session = require('express-session');
 var uuidv4 = require('uuid/v4');
 var redis = require('redis');
 var client = redis.createClient('6379', 'redis');
+const PORT = process.env.PORT || 3000
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -51,23 +52,9 @@ app.use('/users', users);
 app.use('/teachers', teachers);
 app.use('/', login);
 
+app.listen(PORT, () => {
+    console.log('Serveur sur port:', PORT)
+})
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
 
 module.exports = app;
