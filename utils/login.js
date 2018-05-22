@@ -21,7 +21,7 @@ function loginOK(username, password) {
                 console.log(username)
                 if(element.pseudo == username && validPassword(password, element.password) ){ //validPassword(password, element.password)
                     console.log('ok')
-                    resolve({'username': element.username, 'xid': element._id, 'etat': element.etat})
+                    resolve({'username': element.pseudo, 'xid': element._id, 'etat': element.etat})
                 }
             })
             reject()
