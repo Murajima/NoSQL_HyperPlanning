@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
-var teachers = require('./routes/prof')
+var teachers = require('./routes/teacher')
 
 var app = express();
 
