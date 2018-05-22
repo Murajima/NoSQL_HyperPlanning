@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 3000
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
-var teachers = require('./routes/prof')
-var students = require('./routes/student')
+var teachers = require('./routes/teacher');
+var student = require('./routes/student');
 
 var app = express();
 
@@ -47,7 +47,7 @@ app.all('*',(req, res, next) => {
 
 app.use('/users', users);
 app.use('/teachers', teachers);
-app.use('/student', students)
+app.use('/student', student);
 app.use('/', login);
 
 

@@ -15,10 +15,10 @@ router.get('/', (req, res, next) => {
 router.post('/login', (req, res, next) => {
     var password = req.body.password
     var username = req.body.username
-    console.log(username)
     utils.loginOK(username, password).then((result) => {
-        req.session.username = result.id
-        console.log(typeof result.id)
+        req.session.username = result.xid
+        console.log(result)
+        client.set(String(result.xid), JSON.stringify({'username': result.username, 'etat': result.etat, 'id': result.xid}))
         if (result.etat == 'etudiant') {
             res.redirect('/student')
         } else if (result.etat == 'professeur') {
@@ -41,11 +41,11 @@ router.post('/adduser', (req, res, next) => {
 		var username = req.body.username
 		var firstname = req.body.firstname
 		var lastname = req.body.lastname
-		newuser.createUser(username, password, firstname, lastname).then(res.redirect('/login'))
+		newuser.createUser(username, password, firstname, lastname).then(res.redirect('/'))
 })
 
 router.use((req, res) => {
-    res.redirect('/login')
+    res.redirect('/')
 })
 
 

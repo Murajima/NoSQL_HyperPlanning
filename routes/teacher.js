@@ -5,6 +5,14 @@ var client = redis.createClient('6379', 'redis')
 var Models = require('../models/models.js')
 
 
+router.all('*', (req, res, next) => {
+    if(req.session.username == "") {
+        res.redirect('/login')
+    } else {
+        next()
+    }
+})
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     // client.set('test', 'toto', function(err, reply){
@@ -14,7 +22,7 @@ router.get('/', function(req, res, next) {
     // })
     Models.User.find({}, function (err, user){
         // console.log(user);
-        res.render('prof', { users : user });
+        res.render('teacher', { users : user });
     }).catch (function (err) {
         console.log(err);
     })
