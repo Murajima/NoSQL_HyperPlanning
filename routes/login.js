@@ -11,20 +11,20 @@ router.get('/', (req, res, next) => {
     res.render('login/login')
 })
 
-router.post('/loginOK', (req, res, next) => {
+router.post('/login', (req, res, next) => {
     var password = req.body.password
     var username = req.body.username
+    console.log(username)
     utils.loginOK(username, password).then((result) => {
-        req.session.username = result._id
-        console.log(result.id)
-        client.set(result.id, result)
+        req.session.username = result.id
+        console.log(typeof result.id)
         if (result.etat == 'etudiant') {
             res.redirect('/register')
         } else if (result.etat == 'professeur') {
             res.redirect('/teachers')
         }
     }).catch(function(e) {
-      res.redirect('/login') // "zut !"
+      res.redirect('/') // "zut !"
     })
 
 })

@@ -27,7 +27,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname,'bower_components')));
 app.use(session({ secret: 'this-is-a-secret-token', cookie: { maxAge: 60000 }}));
 
 app.all('*',(req, res, next) => {
@@ -45,9 +44,6 @@ app.all('*',(req, res, next) => {
 });
 
 
-
-//on essaye
-app.use('/login', login);
 app.use('/users', users);
 app.use('/teachers', teachers);
 app.use('/', login);

@@ -18,5 +18,7 @@ services:
     links:
       - redis:redis
       - mongo:mongo
+    depends_on:
+      - mongo
     restart: always
 
