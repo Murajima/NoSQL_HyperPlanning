@@ -11,7 +11,7 @@ function createUser (username, password, firstname, lastname) {
     // Creating one user.
     var someone = new newUser ({
       pseudo: username,
-      password: bcrypt.password,
+      password: generateHash(password),
       nom: lastname,
       prenom: firstname,
       etat: 'etudiant',
@@ -20,6 +20,10 @@ function createUser (username, password, firstname, lastname) {
     // Saving it to the database.
     someone.save(function (err) {if (err) console.log ('Error on save!')})
   })
+}
+
+function generateHash(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
 module.exports = {createUser}
