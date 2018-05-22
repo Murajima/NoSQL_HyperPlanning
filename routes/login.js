@@ -38,11 +38,11 @@ router.post('/adduser', (req, res, next) => {
 		var username = req.body.username
 		var firstname = req.body.firstname
 		var lastname = req.body.lastname
-		newuser.createUser(username, password, firstname, lastname).then(res.redirect('/login'))
+		newuser.createUser(username, password, firstname, lastname).then(res.redirect('/'))
 })
 
 router.use((req, res) => {
-    res.redirect('/login')
+    res.redirect('/')
 })
 
 
