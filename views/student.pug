@@ -1,5 +1,26 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to you
+doctype html
+head
+    meta(charset='UTF-8')
+    title page Eleve
+    // <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css" />
+    link(rel='stylesheet', href='../bower_components/bootstrap/dist/css/bootstrap.css')
+    // <link rel="stylesheet" href="/stylesheets/login.css">
+    link(rel='stylesheet', href='../public/stylesheets/login.css')
+.col-md-offset-2.col-md-8.well.well-lg.margin_top
+    h2.te  Eleve :
+    table.table.table-striped
+        thead
+            tr
+                th Matiere
+                th Note
+                th Coef
+                th lien
+        tbody
+            -var note = notes
+            each val in notes
+                tr
+                    td= val.matiere
+                    td= val.Note
+                    td= val.Coef
+                    td
+                        a.glyphicon.glyphicon-arrow-right(href='/student/'+val.id)

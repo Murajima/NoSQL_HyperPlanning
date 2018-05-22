@@ -14,6 +14,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var teachers = require('./routes/prof')
+var students = require('./routes/student')
 
 var app = express();
 
@@ -46,7 +47,9 @@ app.all('*',(req, res, next) => {
 
 app.use('/users', users);
 app.use('/teachers', teachers);
+app.use('/student', students)
 app.use('/', login);
+
 
 app.listen(PORT, () => {
     console.log('Serveur sur port:', PORT)

@@ -4,6 +4,7 @@ const utils = require('../utils/login.js')
 const newuser = require('../utils/register')
 const redis = require('redis')
 const client = redis.createClient('6379', 'redis')
+var Models = require('../models/models.js')
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.post('/login', (req, res, next) => {
         req.session.username = result.id
         console.log(typeof result.id)
         if (result.etat == 'etudiant') {
-            res.redirect('/register')
+            res.redirect('/student')
         } else if (result.etat == 'professeur') {
             res.redirect('/teachers')
         }
@@ -32,6 +33,8 @@ router.post('/login', (req, res, next) => {
 router.get('/register', (req, res, next) => {
     res.render('login/edit')
 })
+
+
 
 router.post('/adduser', (req, res, next) => {
 		var password = req.body.password
