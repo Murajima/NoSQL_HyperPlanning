@@ -1,26 +1,21 @@
 doctype html
 head
     meta(charset='UTF-8')
-    title page Eleve
-    // <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css" />
-    link(rel='stylesheet', href='../bower_components/bootstrap/dist/css/bootstrap.css')
-    // <link rel="stylesheet" href="/stylesheets/login.css">
-    link(rel='stylesheet', href='../public/stylesheets/login.css')
+    title page Prof
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/login.css')
 .col-md-offset-2.col-md-8.well.well-lg.margin_top
-    h2.te  Eleve :
+    h2.te  Professeur : Jeremy Trufier
+    h2 Liste des Notes :
     table.table.table-striped
         thead
             tr
-                th Matiere
+                th Matière
                 th Note
                 th Coef
-                th lien
         tbody
-            -var note = notes
             each val in notes
                 tr
-                    td= val.matiere
+                    td= val.Matiere
                     td= val.Note
                     td= val.Coef
-                    td
-                        a.glyphicon.glyphicon-arrow-right(href='/student/'+val.id)

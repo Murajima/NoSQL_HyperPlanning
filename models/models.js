@@ -25,9 +25,9 @@ var classeSchema = new db.Schema({
 }, { collection : 'Classe' });
 
 var matiereSchema = new db.Schema({
-    matière: { type: String },
+    matiere: { type: String },
     nom: { type: String },
-}, { collection : 'Matière' });
+}, { collection : 'Matiere' });
 
 var User = db.model('User', userSchema);
 var Note = db.model('Note', noteSchema);
