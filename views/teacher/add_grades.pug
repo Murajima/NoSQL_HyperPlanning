@@ -1,0 +1,18 @@
+html
+    head
+        meta(charset='UTF-8')
+        title hyperplanning - add grades
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+        link(rel='stylesheet', href='/stylesheets/login.css')
+    body
+        .well.well-sm.col-xs-offset-4.col-xs-6.margin_top
+            h1.text-center Add grades
+            form.form-inline(action="/add_grades", method="POST")
+                div.form-group
+                    label(for="Note") NOTE:
+                    input.form-control(type='number' name="Note" placeholder="0")
+                div.form-group
+                    label(for="Coef") COEF:
+                    input.form-control(type='number' name="Coef" placeholder="1")
+                div
+                    button.btn-primary(type="submit") Save

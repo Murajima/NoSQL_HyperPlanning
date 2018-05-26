@@ -22,4 +22,16 @@ router.get('/', function(req, res, next) {
     })
 });
 
+router.get('/add_grades', function(req, res, next) {
+    res.render('teacher/add_grades')
+});
+
+router.post('/add_grades', function(req, res, next) {
+    Models.User.find({}, function (err, user){
+        res.render('teacher/teacher', { users : user });
+    }).catch (function (err) {
+        console.log(err);
+    })
+});
+
 module.exports = router;

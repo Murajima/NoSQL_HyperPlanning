@@ -5,11 +5,12 @@ function createUser (username, password, firstname, lastname) {
     return new Promise((resolve, reject) =>{
         // Creating one user.
         var someone = new Models.User({
-            pseudo: username,
+            username: username,
             password: generateHash(password),
             nom: lastname,
             prenom: firstname,
             etat: 'etudiant',
+            classe_id: "5ae9dec6dc6642f602c14947"
         })
         // Saving it to the database.
         someone.save().then(() => {
