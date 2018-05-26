@@ -2,9 +2,7 @@ doctype html
 head
     meta(charset='UTF-8')
     title page Prof
-    // <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
-    // <link rel="stylesheet" href="/stylesheets/login.css">
     link(rel='stylesheet', href='/stylesheets/login.css')
 .col-md-offset-2.col-md-8.well.well-lg.margin_top
     h2.te  Professeur : Jeremy Trufier
@@ -24,22 +22,4 @@ head
                     td= val.prenom
                     td= val.id
                     td
-                        a.glyphicon.glyphicon-arrow-right(href='/student/'+val.id)
-            //tr
-            //    td John
-            //    td Doe
-            //    td john@example.com
-            //    td
-            //        a.glyphicon.glyphicon-arrow-right(href='http://google.com')
-            //tr
-            //    td Mary
-            //    td Moe
-            //    td mary@example.com
-            //    td
-            //        a.glyphicon.glyphicon-arrow-right(href='http://google.com')
-            //tr
-            //    td July
-            //    td Dooley
-            //    td july@example.com
-            //    td
-            //        a.glyphicon.glyphicon-arrow-right(href='http://google.com')
+                        a.glyphicon.glyphicon-arrow-right(href='/teachers/add_grades/'+val.id)

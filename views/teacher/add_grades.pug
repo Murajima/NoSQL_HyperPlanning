@@ -7,12 +7,14 @@ html
     body
         .well.well-sm.col-xs-offset-4.col-xs-6.margin_top
             h1.text-center Add grades
-            form.form-inline(action="/add_grades", method="POST")
+            form.form-inline(action="/teachers/add_grades", method="POST")
                 div.form-group
                     label(for="Note") NOTE:
                     input.form-control(type='number' name="Note" placeholder="0")
                 div.form-group
                     label(for="Coef") COEF:
                     input.form-control(type='number' name="Coef" placeholder="1")
+                div.form-group
+                    input.form-control(type='hidden' name="xid" value=users._id)
                 div
                     button.btn-primary(type="submit") Save

@@ -1,24 +1,17 @@
-// const Models = require('../models/models.js')\
+const Models = require('../models/models.js')
 
-// function createUser (note, coef) {
-//     return new Promise((resolve, reject) =>{
-//         // Creating one user.
-//         var new_note = new Models.Note({
-//             pseudo: username,
-//             password: generateHash(password),
-//             nom: lastname,
-//             prenom: firstname,
-//             etat: 'etudiant',
-//         })
-//         // Saving it to the database.
-//         someone.save().then(() => {
-//             resolve('saved')
-//         })
-//     })
-// }
+function createNote (xid, matiere_id, note, coef) {
+    return new Promise((resolve, reject) =>{
+        var note_add = new Models.Note({
+            username: xid,
+            matiere_id: matiere_id,
+            Coef: coef,
+            Note: note
+        })
+        note_add.save().then(() => {
+            resolve('saved')
+        })
+    })
+}
 
-// function generateHash(password) {
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-// }
-
-// module.exports = {createUser}
+module.exports = {createNote}
