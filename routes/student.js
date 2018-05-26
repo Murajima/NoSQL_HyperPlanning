@@ -6,7 +6,7 @@ var Models = require('../models/models.js')
 
 
 router.all('*', (req, res, next) => {
-    if(req.session.username == "") {
+    if(req.session.username === undefined) {
         res.redirect('/login')
     } else {
         next()
