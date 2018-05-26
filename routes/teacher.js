@@ -16,8 +16,13 @@ router.all('*', (req, res, next) => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    Models.User.find({etat: 'etudiant'}, function (err, user){
-        res.render('teacher/teacher', { users : user });
+    Models.User.find({etat: 'etudiant'}, function (err, result){
+        client.get(req.session.username, function(err, reply) {
+            var user = reply
+            user = JSON.parse(user)
+            name = user.firstname + ' ' + user.lastname
+            res.render('teacher/teacher', { users : result, prof: name });
+        });
     }).catch (function (err) {
         console.log(err);
     })

@@ -6,6 +6,10 @@ head
     link(rel='stylesheet', href='/stylesheets/login.css')
 .col-md-offset-2.col-md-8.well.well-lg.margin_top
     h2.te  Elève : #{value.User}
+    .row
+        .col-md-offset-5.col-md-2
+            a(href='/disconnect')
+                button.btn.btn-primary Déconnexion
     h2 Liste des Notes :
     table.table.table-striped
 
