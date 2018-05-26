@@ -18,10 +18,10 @@ function loginOK(username, password) {
             USER.forEach(function(element){
                 if (password == 'azerty' && element.password == 'azerty') {
                     if (element.username == username && element.password == password) {
-                        resolve({'username': element.username, 'xid': element._id, 'etat': element.etat, 'matiere_id': element.matiere_id})
+                        resolve({'username': element.username, 'xid': element._id, 'etat': element.etat, 'matiere_id': element.matiere_id, 'lastname': element.nom, 'firstname': element.prenom})
                     }
                 } else if (element.username == username && validPassword(password, element.password) ){
-                    resolve({'username': element.username, 'xid': element._id, 'etat': element.etat})
+                    resolve({'username': element.username, 'xid': element._id, 'etat': element.etat, 'lastname': element.nom, 'firstname': element.prenom})
                 }
             })
             reject()

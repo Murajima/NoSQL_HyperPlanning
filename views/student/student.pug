@@ -5,17 +5,20 @@ head
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
     link(rel='stylesheet', href='/stylesheets/login.css')
 .col-md-offset-2.col-md-8.well.well-lg.margin_top
-    h2.te  Professeur : Jeremy Trufier
+    h2.te  Elève : #{value.User}
     h2 Liste des Notes :
     table.table.table-striped
-        thead
-            tr
-                th Matière
-                th Note
-                th Coef
+
         tbody
-            each val in notes
-                tr
-                    td= val.Matiere
-                    td= val.Note
-                    td= val.Coef
+            each val in value.Notes
+                thead
+                    tr
+                        th= val.Matiere
+                        th Note
+                        th Coef
+                tbody
+                    each note in val.Notes
+                        tr
+                            td
+                            td= note.Note
+                            td= note.Coef
