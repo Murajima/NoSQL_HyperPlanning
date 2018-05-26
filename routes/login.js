@@ -34,6 +34,11 @@ router.get('/register', (req, res, next) => {
     res.render('login/edit')
 })
 
+router.get('/disconnect', (req, res, next) => {
+    req.session.username = ''
+    res.redirect('/')
+})
+
 
 
 router.post('/adduser', (req, res, next) => {

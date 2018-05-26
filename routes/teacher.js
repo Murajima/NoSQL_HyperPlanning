@@ -16,7 +16,7 @@ router.all('*', (req, res, next) => {
 /* GET home page. */
 router.get('/', function(req, res, next) {
     Models.User.find({}, function (err, user){
-        res.render('teacher', { users : user });
+        res.render('teacher/teacher', { users : user });
     }).catch (function (err) {
         console.log(err);
     })

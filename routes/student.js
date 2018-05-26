@@ -15,7 +15,7 @@ router.all('*', (req, res, next) => {
 
 router.get('/', function(req, res, next) {
     Models.Note.find({}, function (err, note){
-        res.render('student', { notes : note  })
+        res.render('student/student', { notes : note  })
     }).where('User').equals(req.body.User).catch (function (err) {
         console.log(err)
     })
