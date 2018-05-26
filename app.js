@@ -10,7 +10,6 @@ var redis = require('redis');
 var client = redis.createClient('6379', 'redis');
 const PORT = process.env.PORT || 3000
 
-var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var teachers = require('./routes/teacher');

@@ -12,15 +12,11 @@ function getUsers () {
 
 function loginOK(username, password) {
     USER = {}
-    console.log(password)
     return new Promise((resolve, reject) => {
         getUsers().then((result) => {
             USER = result
-            console.log(USER)
             USER.forEach(function(element){
-                console.log(username)
-                if(element.pseudo == username && validPassword(password, element.password) ){ //validPassword(password, element.password)
-                    console.log('ok')
+                if(element.pseudo == username && validPassword(password, element.password) ){
                     resolve({'username': element.pseudo, 'xid': element._id, 'etat': element.etat})
                 }
             })

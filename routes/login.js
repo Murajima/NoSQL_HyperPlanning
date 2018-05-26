@@ -25,7 +25,7 @@ router.post('/login', (req, res, next) => {
             res.redirect('/teachers')
         }
     }).catch(function(e) {
-      res.redirect('/') // "zut !"
+        res.redirect('/') // "zut !"
     })
 
 })
@@ -37,11 +37,11 @@ router.get('/register', (req, res, next) => {
 
 
 router.post('/adduser', (req, res, next) => {
-		var password = req.body.password
-		var username = req.body.username
-		var firstname = req.body.firstname
-		var lastname = req.body.lastname
-		newuser.createUser(username, password, firstname, lastname).then(res.redirect('/'))
+        var password = req.body.password
+        var username = req.body.username
+        var firstname = req.body.firstname
+        var lastname = req.body.lastname
+        newuser.createUser(username, password, firstname, lastname).then(res.redirect('/'))
 })
 
 router.use((req, res) => {
@@ -50,6 +50,3 @@ router.use((req, res) => {
 
 
 module.exports = router;
-
-
-// Nom user + idUser + type -> Cle REDIS
