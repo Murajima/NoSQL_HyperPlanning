@@ -1,6 +1,7 @@
 var redis = require('redis')
 var client = redis.createClient('6379', 'redis')
 var Models = require('../models/models.js')
+var ObjectId = require('mongoose').Types.ObjectId;
 
 function getBulletin(xid) {
     return new Promise((resolve, reject) => {
@@ -10,6 +11,7 @@ function getBulletin(xid) {
         var itemsProcessed = 1
         var key = ''
         var exists = false
+        calcMoyMatiere(xid)
         Models.Note.find({username: xid}, function (err, notes){
             var data_list = []
             client.get(xid, function(err, reply) {
@@ -42,10 +44,23 @@ function getBulletin(xid) {
                                 list.push({Matiere: element.Matiere, Notes: note_array})
                             }
                             if (itemsProcessed == data_list.length) {
+                                var cpt = 0
                                 calcMoyGen(xid).then((result) => {
                                     var returnList = {'User': name, 'Notes': list, 'Moy':result}
-                                    console.log(returnList)
-                                    resolve(returnList)
+                                    calcMoyMatiere(xid).then((result) => {
+                                        result.forEach(function(element) {
+                                            for(var i = 0; i < returnList.Notes.length; i++) {
+                                                if ( element.Matiere == returnList.Notes[i].Matiere) {
+                                                    returnList.Notes[i].Moyenne = element.Moy
+                                                    cpt ++
+                                                }
+                                            }
+                                            if(cpt == result.length) {
+                                                resolve(returnList)
+                                            }
+
+                                        })
+                                    })
                                 })
                             }
                             exists = false
@@ -82,6 +97,53 @@ function calcMoyGen(user) {
             }}
         ], function (err, moy) {
            resolve(moy[0].numerator/moy[0].denominator)
+        })
+    })
+}
+
+function getMatiere(xid , element) {
+    return new Promise((resolve, reject) => {
+        Models.Matiere.find({}, function(err, result){
+            getMatiereName(result, element).then((result) => {
+                resolve(result)
+            })
+        })
+    })
+}
+
+function getMatiereName(Matieres, list) {
+    return new Promise((resolve, reject) => {
+        var returnList = []
+        Matieres.forEach(function(element) {
+            for(var i = 0; i < list.length; i++){
+                if(element._id == list[i]._id){
+                    var tmp = {Matiere: element.matiere, Moy: list[i].numerator / list[i].denominator}
+                    returnList.push(tmp)
+                }
+            }
+            if(returnList.length == list.length) {
+                resolve(returnList)
+            }
+        })
+    })
+}
+
+function calcMoyMatiere(user) {
+    return new Promise((resolve, reject) => {
+        var moy_list = []
+        Models.Note.aggregate([
+            {$match: {
+                username: user
+            }},
+            {$group: {
+                _id:'$matiere_id',
+                numerator: {$sum:{$multiply:["$Note", "$Coef"]}},
+                denominator: {$sum: "$Coef"},
+            }}
+        ], function (err, moy) {
+            getMatiere(moy._id, moy).then((result) => {
+                resolve(result)
+            })
         })
     })
 }
