@@ -42,8 +42,11 @@ function getBulletin(xid) {
                                 list.push({Matiere: element.Matiere, Notes: note_array})
                             }
                             if (itemsProcessed == data_list.length) {
-                                var returnList = {'User': name, 'Notes': list}
-                                resolve(returnList)
+                                calcMoyGen(xid).then((result) => {
+                                    var returnList = {'User': name, 'Notes': list, 'Moy':result}
+                                    console.log(returnList)
+                                    resolve(returnList)
+                                })
                             }
                             exists = false
                             itemsProcessed ++
@@ -62,6 +65,23 @@ function getNotes(element) {
             var key = mat[0].matiere
             note_array.push({Note: element.Note, Coef: element.Coef})
             resolve({Matiere: key, Notes: note_array})
+        })
+    })
+}
+
+function calcMoyGen(user) {
+    return new Promise((resolve, reject) => {
+        Models.Note.aggregate([
+            {$match: {
+                username: user
+            }},
+            {$group: {
+                _id:'$username',
+                numerator: {$sum:{$multiply:["$Note", "$Coef"]}},
+                denominator: {$sum: "$Coef"},
+            }}
+        ], function (err, moy) {
+           resolve(moy[0].numerator/moy[0].denominator)
         })
     })
 }
