@@ -96,7 +96,7 @@ function calcMoyGen(user) {
                 denominator: {$sum: "$Coef"},
             }}
         ], function (err, moy) {
-           resolve(moy[0].numerator/moy[0].denominator)
+           resolve(precisionRound(moy[0].numerator/moy[0].denominator, 1))
         })
     })
 }
@@ -117,7 +117,7 @@ function getMatiereName(Matieres, list) {
         Matieres.forEach(function(element) {
             for(var i = 0; i < list.length; i++){
                 if(element._id == list[i]._id){
-                    var tmp = {Matiere: element.matiere, Moy: list[i].numerator / list[i].denominator}
+                    var tmp = {Matiere: element.matiere, Moy: precisionRound(list[i].numerator / list[i].denominator, 1)}
                     returnList.push(tmp)
                 }
             }
@@ -146,6 +146,11 @@ function calcMoyMatiere(user) {
             })
         })
     })
+}
+
+function precisionRound(number, precision) {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
 }
 
 module.exports = {getBulletin}
