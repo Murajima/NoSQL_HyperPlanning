@@ -7,7 +7,7 @@ var student = require('../utils/student.js')
 
 
 router.all('*', (req, res, next) => {
-    if(req.session.username === undefined) {
+    if(req.session.username === undefined && req.session.etat == 'etudiant') {
         res.redirect('/login')
     } else {
         next()

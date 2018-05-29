@@ -17,6 +17,7 @@ router.post('/login', (req, res, next) => {
     var username = req.body.username
     utils.loginOK(username, password).then((result) => {
         req.session.username = result.xid
+        req.session.etat = result.etat
         client.set(String(result.xid), JSON.stringify({'username': result.username, 'etat': result.etat, 'id': result.xid, 'matiere_id': result.matiere_id, 'lastname': result.lastname, 'firstname': result.firstname}))
         if (result.etat == 'etudiant') {
             res.redirect('/student')

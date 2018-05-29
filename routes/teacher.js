@@ -7,7 +7,7 @@ var teacher = require('../utils/teacher.js')
 
 
 router.all('*', (req, res, next) => {
-    if(req.session.username === undefined) {
+    if(req.session.username === undefined && req.session.etat == 'professeur') {
         res.redirect('/login')
     } else {
         next()
